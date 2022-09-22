@@ -1,0 +1,85 @@
+#include <iostream>
+#include <stdio.h>
+#include <bitset>
+
+using std::cout;
+using std::cin;
+
+
+int main()
+{
+	//t1
+	std::cout << "1.\nTikhonova Alina Sergeevna 221-331" << std::endl;
+
+
+
+	//t2
+	std::cout << "2." << std::endl;
+	cout << "min int: " << int(0b10000000000000000000000000000000);
+	cout << "\tmax int: " << int(0b01111111111111111111111111111111);
+	cout << "\tsize of (int)=" << sizeof(int) << std::endl;
+	cout << "min unsigned int: 0";
+	cout << "\tmax unsigned int: " << unsigned int(0b01111111111111111111111111111111);
+	cout << "\tsize of (unsigned int)=" << sizeof(unsigned int) << std::endl;
+	cout << "min short: " << short(0b1000000000000000);
+	cout << "\tmax short: " << short(0b0111111111111111);
+	cout << "\tsize of (short)=" << sizeof(short) << std::endl;
+	cout << "min unsigned short: 0";
+	cout << "\tmax unsigned short: " << unsigned short(0b0111111111111111);
+	cout << "\tsize of (unsigned short)=" << sizeof(unsigned short) << std::endl;
+	cout << "min long: " << long(0b10000000000000000000000000000000);
+	cout << "\tmax long: " << long(0b01111111111111111111111111111111);
+	cout << "\tsize of (long)=" << sizeof(long) << std::endl;
+	cout << "min long long: " << long long(0b1000000000000000000000000000000000000000000000000000000000000000);
+	cout << "\tmax long long: " << long long(0b0111111111111111111111111111111111111111111111111111111111111111);
+	cout << "\tsize of (long long)=" << sizeof(long long) << std::endl;
+	cout << "min double: " << double(0b1000000000000000000000000000000000000000000000000000000000000000);
+	cout << "\tmax double: " << double(0b0111111111111111111111111111111111111111111111111111111111111111);
+	cout << "\tsize of (double)=" << sizeof(double) << std::endl;
+	cout << "max char: " << char(0b11111111); //???
+	cout << "\tmin char: " << char(0b00000000);
+	cout << "\tsize of(char) = " << sizeof(char) << std::endl;
+	cout << "max bool: " << bool(0b01111111);
+	cout << "\tmin bool: " << bool(0b00000000);
+	cout << "\tsize of(bool) = " << sizeof(bool) << std::endl;
+
+
+
+	//t3
+	std::cout << "3.\nenter a number: ";
+	int num3;
+	cin >> num3;
+	cout << "in hexadecimal form: " << std::hex << num3 << std::endl;
+	cout << "in binary form:  " << std::bitset<16>(num3) << std::endl;
+	double dnum;
+	char cnum;
+	bool bnum;
+	bnum = (bool)num3;
+	cout << "bool: " << bnum << std::endl;
+	dnum = (double)num3;
+	cout << "double: " << dnum << std::endl;
+	cnum = (char)num3;
+	cout << "char: " << cnum << std::endl;
+
+
+
+	//t4
+	cout << "4." << std::endl;
+	cout << "enter the coefficients: a*x=b ";
+	int a, b;
+	cin >>  a >>  b;
+	cout << std::dec << a << " * x = " << std::dec << b << std::endl;
+	cout << "x = " << b << " / " << a << std::endl;
+	cout << "x = " << (float)b / (float)a << std::endl;
+	cout << "answer: " << (float)b / (float)a << std::endl;
+
+
+
+	//t5
+	cout << "5." << std::endl;
+	cout << "enter the coordinates of the segment: ";
+	int c1, c2;
+	cin >> c1 >> c2;
+	cout << "middle: " << ((float)c1 + (float)c2) / 2 << std::endl;
+
+}
