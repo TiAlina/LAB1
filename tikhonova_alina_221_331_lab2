@@ -1,0 +1,92 @@
+
+#include <iostream>
+#include <string>
+
+using std::cout;
+using std::cin;
+
+int fact(int b, int a = 1) {
+    int c = 1;
+    while (a <= b) {
+        c = c * a;
+        a++;
+    }
+    return c;
+}
+
+void task1() {
+    cout << "enter number: ";
+    int t1;
+    cin >> t1;
+    int count1 = 0;
+    char a = '0';
+    while (count1 <= t1) {
+        int count2 = 0;
+        while (count2 <= count1)
+        {
+            cout << count2;
+            count2++;
+        }
+        cout << "\n";
+        count1++;
+    }
+    cout << "\n";
+}
+
+void task2()
+{
+    long long pred = 1;
+    long long n, c = 0;
+    cout << "enter n: ";
+    cin >> n;
+    cout << "1\n";
+    for (long long k = 0; k <= n; k++)
+    {
+        c = pred * (n - k) / (k + 1);
+        cout << c << std::endl;
+        pred = c;
+    }
+}
+
+void task3()
+{
+    double i, s, a;
+    s = 0;
+    int k = 0;
+    cout << "enter: ";
+    do{
+        cin >> i;
+        if (i > 0) {
+            s = s + i;
+            k++;
+        } 
+    } while (i > 0);
+    a = s / k;
+    cout << "answer: " << a << std::endl;
+}
+
+int main()
+{
+    int choice = 0;
+    while (true)
+    {
+        cout << "\nenter task number: \n1. Task 1\n2. Task 2\n3. Task 3\n4. EXIT\n";
+        cin >> choice;
+        switch (choice) {
+        case 1:
+            task1();
+            break;
+        case 2:
+            task2();
+            break;
+        case 3:
+            task3();
+            break;
+        case 4:
+            cout << "GOODBYE";
+            return 0;
+        default:
+            return 0;
+        }
+    }
+}
