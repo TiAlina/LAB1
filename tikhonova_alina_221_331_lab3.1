@@ -1,0 +1,116 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+void task1(int *mass) {
+    //int mass[10] = { 10,100,2,6,3,7,5,9,115,11 };
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 9 - i; j++) {
+            if (mass[j] > mass[j + 1]) {
+                /*int zam = mas[j];
+                 mas[j] = mas[j + 1];
+                 mas[j + 1] = zam;*/
+                std::swap(mass[j], mass[j + 1]);
+            }
+        }
+    }
+    for (int s = 0; s < 10; s++) {
+        std::cout << mass[s] << " ";
+    }
+}
+
+void task2(int *mas) {
+    int elem;
+    for (int i = 1; i < 20; i++) {//цикл от 2 элемента, для того, чтобы можно было выбрать потом первый элемент
+        elem = mas[i];//сохраняю элемент
+        int j = i - 1;
+        while (elem < mas[j]) {//новый цикл от предыдущего до начала списка, если элемент меньше, то перезаписываю
+            mas[j + 1] = mas[j];
+            j--;
+        }
+        mas[j + 1] = elem;//возвращаю перезаписанный элемент
+    }
+    for (int s = 0; s < 20; s++) {
+        std::cout << mas[s] << " ";
+    }
+}
+
+void task3() {
+
+}
+
+
+int main()
+{
+    int task;
+    while (true) 
+    {
+        std::cout << "\nenter task number: \n1. Task 1: bubble sort\n2. Task 2: counting sort\n3. Task 3: merge sort\n";
+        std::cin >> task;
+
+        switch (task) {
+        case 1: {
+            //int mas[10];
+            //srand(time(NULL));
+            //for (int i = 0; i < 50; i++) {
+            //    mas[i] = rand();
+            //}
+            int mass[10];
+            std::cout << "Enter 10 digits into the array: \n";
+            for (int i = 0; i < 10; i++) {
+                std::cin >> mass[i]; // читамем элем в массив
+            }
+            task1(mass);
+            break;
+        }
+        case 2: {
+            int mas[20];
+            std::cout << "Enter 20 digits into the array: \n";
+            for (int i = 0; i < 20; i++) {
+                std::cin >> mas[i]; // читамем элем в массив
+            }
+            task2(mas);
+            break;
+        }
+        case 3: {
+            task3();
+            break;
+        }
+        default:
+            return 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*void task2(char mas[]) {
+
+    int count[26] = { 0 };
+    for (int i = 0; i < 10; i++) {
+        int j = (int)mas[i] - (int)'a';
+        count[j]++;
+    }
+
+    int j = 0, i = 0;
+    while (j < 26) {
+        if (count[j] > 0) {
+            mas[i] = (mas)((int)'a' + j);
+            i++;
+            count[j]--;
+        }
+        else {
+            j++;
+        }
+    */
