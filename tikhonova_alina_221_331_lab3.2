@@ -1,0 +1,102 @@
+#include <iostream>
+
+int chet(int a) { //функция для поиска суммы четных чисел, возвращает эту сумму
+    int chet = 0, nechet = 0;
+    int box = 0, num = 0; //box нужен для чередования, а num для того, чтобы узнать сколько цифр в числе
+    while (a > 0) {
+        if (box == 0) { //то самое чередование
+            chet = chet + a % 10;
+            box = 1;
+        }
+        else {
+            nechet = nechet + a % 10;
+            box = 0;
+        }
+        num += 1;
+        a = a / 10;
+    }
+    if (num % 2 == 1) { //меняет четное и нечетное местами, если они не совпедеют
+        box = chet;
+        chet = nechet;
+        nechet = box;
+    }
+    return chet;
+}
+
+
+void task1(int& size, int*& array) { //ввод массива
+    std::cout << "\nhow many numbers will be in the array? ";
+    std::cin >> size;
+    std::cout << "\nenter numbers into array: ";
+    for (int i = 0; i < size; i++) {
+        std::cin >> array[i];
+    }
+    std::cout << "\n\n";
+}
+
+void task2(int& size, int*& array) { //вывод массива
+    for (int i = 0; i < size; i++) {
+        std::cout << array[i] << " ";
+    }
+    std::cout << "\n\n";
+}
+
+void task3(int& size, int*& array) {//сортировка сумме цифр, стоящих на четных местах
+    for (int i = 0; i < size; i++) {//та же сортировка пузырьком, только по четным числам с помщью функции chet
+        for (int j = 0; j < size - i; j++) {
+            if (chet(array[j]) > chet(array[j + 1])) {
+                std::swap(array[j], array[j + 1]);
+            }
+        }
+    }
+}
+
+void task4(int& size, int*& array) {// сортировка массива вначале по возрастанию последней цифры, а при совпадении последних цифр - по убыванию.
+    for (int i = 0; i < size; i++) {//возрастание последней цифры
+        for (int j = 0; j < size - i; j++) {
+            if (array[j] % 10 > array[j + 1] % 10) {
+                std::swap(array[j], array[j + 1]);
+            }
+        }
+    }
+    for (int i = 0; i < size; i++) {//вторая сортировка проверяющая совпадение последних цифр
+        for (int j = 0; j < size - i; j++) {
+            if (array[j] % 10 == array[j + 1] % 10) {
+                std::swap(array[j], array[j + 1]);
+            }
+        }
+    }
+}
+
+int main()
+{
+    int size;//сюда запишется размер массива
+    int choice = 0;
+    int* array = new int[size];//создание динамического массива, ввод которого будет в task1
+
+    while (true) {
+        std::cout << "enter task number: \n1. - entering an array \n2. - output an array to the console";
+        std::cout << "\n3. - sorting by the sum of the digits standing in even places";
+        std::cout << "\n4. - sort the array first in accending order of the last digit \n5. - EXIT\n";
+        std::cin >> choice;
+        switch (choice) {
+        case 1:
+            task1(size, array);//ввод массива
+            break;
+        case 2:
+            task2(size, array);//вывод массива
+            break;
+        case 3:
+            task3(size, array);//сортировка сумме цифр, стоящих на четных местах
+            break;
+        case 4:
+            task4(size, array);// сортировка массива вначале по возрастанию последней цифры, а при совпадении последних цифр - по убыванию.
+            break;
+        case 5:
+            std::cout << "GOODBYE =)";//выход
+            return 0;
+        default:
+            break;
+        }
+    }
+}
